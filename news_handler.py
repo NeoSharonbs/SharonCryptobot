@@ -12,7 +12,6 @@ def handle_news_command(bot, message):
             bot.reply_to(message, "Please provide cryptocurrency.")
             return
 
-        # Extracting coin and currency from the arguments
         coin = args
         params = {
             'auth_token': CRYPTOPANIC_TOKEN,

@@ -4,10 +4,8 @@ import cryptocurrency_handler, graph_handler, news_handler, setalert_handler, he
 import price_alerts
 from api_tokens import TELEBOT_TOKEN
 
-# Create bot instance
 bot = telebot.TeleBot(TELEBOT_TOKEN)
 
-# Register command handlers (assuming each handler is similarly defined in their respective command files)
 @bot.message_handler(commands=['cryptocurrency'])
 def handle_cryptocurrency(message):
     cryptocurrency_handler.handle_cryptocurrency_command(bot, message)
@@ -28,7 +26,6 @@ def handle_setalert(message):
 def handle_help(message):
     help_handler.handle_help_command(bot, message)
 
-# Start polling
 if __name__ == '__main__':
     bot.polling()
 

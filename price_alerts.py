@@ -2,9 +2,8 @@ import requests
 import time
 from api_urls import COINGECKO_PRICE_URL
 
-user_target_lst = []  # List to store user-set price alerts
+user_target_lst = []
 
-# Function to check price alerts
 def check_price_alerts(bot):
     global user_target_lst
     url = COINGECKO_PRICE_URL
@@ -33,10 +32,10 @@ def check_price_alerts(bot):
                     if alert['condition'] == 'above' and current_price > alert['price_target']:
                         message = f"{alert['ids'].capitalize()} price is above {currency_symbol}{formatted_target_price} {alert['vs_currencies']}.\n Current price: {currency_symbol}{formatted_price}"
                         bot.send_message(alert['chat_id'], message)
-                        user_target_lst.remove(alert)  # Remove alert after sending message
+                        user_target_lst.remove(alert)
                     elif alert['condition'] == 'below' and current_price < alert['price_target']:
                         message = f"{alert['ids'].capitalize()} price is below {currency_symbol}{formatted_target_price} {alert['vs_currencies']}.\n Current price: {currency_symbol}{formatted_price}"
                         bot.send_message(alert['chat_id'], message)
-                        user_target_lst.remove(alert)  # Remove alert after sending message
+                        user_target_lst.remove(alert)
 
-        time.sleep(30)  # Check alerts every 30 seconds
+        time.sleep(30)
